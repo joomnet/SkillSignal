@@ -1,0 +1,4 @@
+SkillSignal
+===========
+
+WPF WCF application
