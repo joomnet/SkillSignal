@@ -1,0 +1,5 @@
+C:\Development\SkillSignal\SkillSignal.Server\bin\Debug\SkillSignal.Server.dll.config
+C:\Development\SkillSignal\SkillSignal.Server\bin\Debug\SkillSignal.Server.dll
+C:\Development\SkillSignal\SkillSignal.Server\bin\Debug\SkillSignal.Server.pdb
+C:\Development\SkillSignal\SkillSignal.Server\obj\Debug\SkillSignal.Server.dll
+C:\Development\SkillSignal\SkillSignal.Server\obj\Debug\SkillSignal.Server.pdb

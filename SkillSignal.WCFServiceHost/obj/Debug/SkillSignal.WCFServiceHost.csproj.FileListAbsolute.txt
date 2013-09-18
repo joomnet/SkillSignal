@@ -1,0 +1,4 @@
+D:\Development\SkillSignal\SkillSignal.WCFServiceHost\bin\Debug\SkillSignal.WCFServiceHost.dll
+D:\Development\SkillSignal\SkillSignal.WCFServiceHost\bin\Debug\SkillSignal.WCFServiceHost.pdb
+D:\Development\SkillSignal\SkillSignal.WCFServiceHost\obj\Debug\SkillSignal.WCFServiceHost.dll
+D:\Development\SkillSignal\SkillSignal.WCFServiceHost\obj\Debug\SkillSignal.WCFServiceHost.pdb

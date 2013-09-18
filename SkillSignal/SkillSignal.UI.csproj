@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89C9342E-B8CA-4817-A678-8FEE7A2306AB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SkillSignal</RootNamespace>
+    <AssemblyName>SkillSignal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Controls">
+      <HintPath>..\..\..\Projects\ClusterTool\Packages\Microsoft.Expression.Blend.SDK.WPF.4.0.0\lib\net40\Microsoft.Expression.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing">
+      <HintPath>..\..\..\Projects\ClusterTool\Packages\Microsoft.Expression.Blend.SDK.WPF.4.0.0\lib\net40\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Effects">
+      <HintPath>..\..\..\Projects\ClusterTool\Packages\Microsoft.Expression.Blend.SDK.WPF.4.0.0\lib\net40\Microsoft.Expression.Effects.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions">
+      <HintPath>..\packages\Blend.Interactivity.Wpf.1.0.1340.0\lib\net\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.2.0\lib\20\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net45\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net45\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\packages\Blend.Interactivity.Wpf.1.0.1340.0\lib\net\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Commands\DisplayableNavigationCommand.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Service References\WCFUserService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceClients\ProjectServiceClient.cs" />
+    <Compile Include="ServiceClients\UserServiceClient.cs" />
+    <Compile Include="ViewModels\AnswerViewModel.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModels\DepositViewModel.cs" />
+    <Compile Include="ViewModels\Factory\IViewModelFactory.cs" />
+    <Compile Include="ViewModels\Factory\ViewModelFactory.cs" />
+    <Compile Include="ViewModels\IApplicationViewModel.cs" />
+    <Compile Include="ViewModels\INavigationService.cs" />
+    <Compile Include="ViewModels\Project\CreateProjectViewModel.cs" />
+    <Compile Include="ViewModels\Project\ICreateProjectViewModel.cs" />
+    <Compile Include="ViewModels\IPageViewModel.cs" />
+    <Compile Include="ViewModels\Login\LoginViewModel.cs" />
+    <Compile Include="ViewModels\QuestionViewModel.cs" />
+    <Compile Include="ViewModels\VATViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="ViewModels\PageNavigationService.cs" />
+    <Compile Include="ViewModels\PageViewModel.cs" />
+    <Compile Include="ViewModels\ProjectDashBoardViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseLedgerViewModel.cs" />
+    <Compile Include="ViewModels\StartPageViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserAccountViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserManagementViewModel.cs" />
+    <Compile Include="Views\ProjectDashboardView.xaml.cs">
+      <DependentUpon>ProjectDashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AnswerView.xaml.cs">
+      <DependentUpon>AnswerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QuestionView.xaml.cs">
+      <DependentUpon>QuestionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\UserManagementView.xaml.cs">
+      <DependentUpon>UserManagementView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ImageDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Login\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Login\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\ProjectDashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AnswerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuestionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\UserManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\SkillSignal.Domain.UserAccount.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\WCFUserService\service.wsdl" />
+    <None Include="Service References\WCFUserService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFUserService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFUserService\SkillSignal.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFUserService\System.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SkillSignal.BusinessLayer\SkillSignal.BusinessLayer.csproj">
+      <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
+      <Name>SkillSignal.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkillSignal.Common\SkillSignal.Common.csproj">
+      <Project>{a66bcad8-9db9-4851-ab01-7a1fb51d08cf}</Project>
+      <Name>SkillSignal.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkillSignal.Domain\SkillSignal.Domain.csproj">
+      <Project>{C7C34B50-BE08-4A00-AE1D-F0214BC198A1}</Project>
+      <Name>SkillSignal.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkillSignal.IBusinessLayer\SkillSignal.IBusinessLayer.csproj">
+      <Project>{fd8c4516-8b45-4cfb-8a0d-e6785bf7409f}</Project>
+      <Name>SkillSignal.IBusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkillSignal.IRepository\SkillSignal.IRepository.csproj">
+      <Project>{e76fc085-dc2c-4faf-972c-d595d5ab7840}</Project>
+      <Name>SkillSignal.IRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkillSignal.Repository\SkillSignal.Repository.csproj">
+      <Project>{47BCAD04-6F37-4302-8DE2-6DC6C107A9AB}</Project>
+      <Name>SkillSignal.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\cancel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\arrow_left.ico" />
+    <Resource Include="Resources\Images\arrow_right.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\correct.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WCFUserService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFUserService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFUserService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFUserService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

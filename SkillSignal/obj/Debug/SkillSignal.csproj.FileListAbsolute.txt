@@ -1,0 +1,1 @@
+C:\Development\SkillSignal\SkillSignal\bin\Debug\SkillSignal.exe.config

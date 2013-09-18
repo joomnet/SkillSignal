@@ -1,0 +1,5 @@
+<Modules>
+  <Module PersistentId="84011ECD-B9E1-48E1-9244-D3044A01CBA2" ModuleId="SkillSignal" />
+  <Module PersistentId="89C9342E-B8CA-4817-A678-8FEE7A2306AB" ModuleId="SkillSignal_1" />
+  <Module PersistentId="A66BCAD8-9DB9-4851-AB01-7A1FB51D08CF" ModuleId="SkillSignal.Common" />
+</Modules>

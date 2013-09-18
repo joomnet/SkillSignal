@@ -1,0 +1,129 @@
+﻿<Window x:Class="SkillSignal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="700" Width="925"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:SkillSignal="clr-namespace:SkillSignal" xmlns:viewModels="clr-namespace:SkillSignal.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type viewModels:DesignTimeApplicationViewModel}}"
+         WindowStyle="None"
+        Background="White"
+        >
+    <Window.Resources>
+        <Style x:Key="OverlayTransparentRectangle" TargetType="Rectangle"> 
+            <Setter Property="Fill" Value="Gray"></Setter>
+            <Setter Property="Opacity" Value="0.5"></Setter>
+        </Style>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="OverlayStyle" TargetType="Grid">
+                <Setter Property="Visibility" Value="Visible"></Setter>
+                <Setter Property="ZIndex" Value="100"></Setter>
+
+                <Style.Triggers>
+                    
+                    <DataTrigger Binding="{Binding ApplicationDialog}" Value="{x:Null}">
+                        <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    </DataTrigger>
+                    
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        <Grid x:Name="Overlay" Style="{StaticResource OverlayStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Rectangle Style="{StaticResource OverlayTransparentRectangle}" />
+            <Rectangle Grid.Row="1" Fill="White"></Rectangle>
+            <ContentControl Grid.Row="1" Background="White" Opacity="1" Content="{Binding ApplicationDialog}" />
+            <Rectangle Grid.Row="2" Style="{StaticResource OverlayTransparentRectangle}" />
+
+        </Grid>
+        <Grid x:Name="MainWindowGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="41"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="WindowTitle"  Grid.Row="0" Grid.Column="1">
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource SkillSignalH2Header}">SkillSignal Analysis Tool -</TextBlock>
+                <TextBlock Text="{Binding CurrentProject.Title}"  Style="{StaticResource SkillSignalH2Header}"></TextBlock>
+            </StackPanel>
+
+        </Grid>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" FlowDirection="RightToLeft" Orientation="Horizontal" Grid.Column="2">
+                <Button Style="{StaticResource GlassButton}" Command="{Binding Close}" Height="30">
+                    <Image Source="{StaticResource Cancel}">
+                    </Image>
+                </Button>
+                <Button Style="{StaticResource GlassButton}" Command="{Binding Resize}">Maximize</Button>
+            </StackPanel>
+            <Grid x:Name="MenuToolBar" Grid.Row="1" Grid.RowSpan="1">
+            <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+                <ToggleButton Command="{Binding Back}" Style="{StaticResource GlassToggleButton}">
+                    <Image Source="{StaticResource LeftArrow}">
+                    </Image>
+                </ToggleButton>
+                <ToggleButton Command="{Binding Forward}" Style="{StaticResource GlassToggleButton}">
+                    <Image Source="{StaticResource RightArrow}">
+                    </Image>
+                </ToggleButton>
+            </StackPanel>
+        </Grid>
+
+                <ItemsControl ItemsSource="{Binding LeftNavigationButtonCollection}" Grid.Row="2" Grid.Column="0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <Border BorderThickness="1" BorderBrush="Black">
+                                <Button Height="90" Width="119" Command="{Binding }">
+                                    <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource NoChromeButton}">
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <StaticResource ResourceKey="StandardColor2" />
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Foreground" Value="White"></Setter>
+                                        <Setter Property="BorderBrush" Value="DarkSlateGray"></Setter>
+                                        <Setter Property="BorderThickness" Value="3"></Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="CadetBlue"></Setter>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                    <Button.Content>
+                                    <TextBlock Text="{Binding DisplayText}" FontWeight="ExtraBold" Width="55" TextWrapping="Wrap" ></TextBlock>
+                                    </Button.Content>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+
+        <!--<Rectangle Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Fill="#992F6D1D"></Rectangle>-->
+        <ContentControl Grid.Column="1" Grid.Row="2" Content="{Binding PageNavigationService.CurrentPage}"></ContentControl >
+    </Grid>
+    </Grid>
+
+</Window>

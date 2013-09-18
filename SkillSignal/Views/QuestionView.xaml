@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="SkillSignal.Views.QuestionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:ViewModels="clr-namespace:SkillSignal"
+             xmlns:views="clr-namespace:SkillSignal.Views"
+             mc:Ignorable="d" 
+            d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type ViewModels:DesignTimeQuestionViewModel}}"
+             d:DesignHeight="300" d:DesignWidth="400" Foreground="#992F6D1D" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Text}" Margin="5" FontSize="14" TextAlignment="Left"></TextBlock>
+        <ItemsControl ItemsSource="{Binding AllAnswers}" Grid.Row="1" AlternationCount="{Binding AllAnswers.Count}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                        <views:AnswerView Margin="10" Index="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(ItemsControl.AlternationIndex) }"></views:AnswerView>
+                    </StackPanel>
+                 </DataTemplate>
+                </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        <Button Content="OK" Grid.Row="2"></Button>
+
+    </Grid>
+</UserControl>

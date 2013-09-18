@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:SkillSignal.ViewModels"
+                    xmlns:views="clr-namespace:SkillSignal.Views" xmlns:skillSignal="clr-namespace:SkillSignal"
+                    xmlns:login="clr-namespace:SkillSignal.ViewModels.Login"
+                    xmlns:login2="clr-namespace:SkillSignal.Views.Login"
+                    xmlns:users="clr-namespace:SkillSignal.ViewModels.Users"
+                    xmlns:users1="clr-namespace:SkillSignal.Views.Users">
+    <DataTemplate DataType="{x:Type viewModels:ProjectDashBoardViewModel}">
+        <views:ProjectDashboardView></views:ProjectDashboardView>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:AnswerViewModel}">
+        <views:AnswerView></views:AnswerView>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:QuestionViewModel}">
+        <views:QuestionView></views:QuestionView>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type login:LoginViewModel}">
+        <login2:LoginView></login2:LoginView>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type users:UserManagementViewModel}">
+        <users1:UserManagementView/>
+    </DataTemplate>
+</ResourceDictionary>
