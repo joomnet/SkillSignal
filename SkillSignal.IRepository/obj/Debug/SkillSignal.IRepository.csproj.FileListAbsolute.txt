@@ -1,7 +1,0 @@
-D:\Development\SkillSignal\SkillSignal.IRepository\bin\Debug\SkillSignal.IRepository.dll
-D:\Development\SkillSignal\SkillSignal.IRepository\bin\Debug\SkillSignal.IRepository.pdb
-D:\Development\SkillSignal\SkillSignal.IRepository\bin\Debug\SkillSignal.Domain.dll
-D:\Development\SkillSignal\SkillSignal.IRepository\bin\Debug\SkillSignal.Domain.pdb
-D:\Development\SkillSignal\SkillSignal.IRepository\obj\Debug\SkillSignal.IRepository.csprojResolveAssemblyReference.cache
-D:\Development\SkillSignal\SkillSignal.IRepository\obj\Debug\SkillSignal.IRepository.dll
-D:\Development\SkillSignal\SkillSignal.IRepository\obj\Debug\SkillSignal.IRepository.pdb

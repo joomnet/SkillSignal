@@ -1,7 +1,0 @@
-D:\Development\SkillSignal\SkillSignal.IBusinessLayer\bin\Debug\SkillSignal.IBusinessLayer.dll
-D:\Development\SkillSignal\SkillSignal.IBusinessLayer\bin\Debug\SkillSignal.IBusinessLayer.pdb
-D:\Development\SkillSignal\SkillSignal.IBusinessLayer\bin\Debug\SkillSignal.Domain.dll
-D:\Development\SkillSignal\SkillSignal.IBusinessLayer\bin\Debug\SkillSignal.Domain.pdb
-D:\Development\SkillSignal\SkillSignal.IBusinessLayer\obj\Debug\SkillSignal.IBusinessLayer.csprojResolveAssemblyReference.cache
-D:\Development\SkillSignal\SkillSignal.IBusinessLayer\obj\Debug\SkillSignal.IBusinessLayer.dll
-D:\Development\SkillSignal\SkillSignal.IBusinessLayer\obj\Debug\SkillSignal.IBusinessLayer.pdb

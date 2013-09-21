@@ -1,4 +1,0 @@
-C:\Development\SkillSignal\SkillSignal.Data\bin\Debug\SkillSignal.Data.dll
-C:\Development\SkillSignal\SkillSignal.Data\bin\Debug\SkillSignal.Data.pdb
-C:\Development\SkillSignal\SkillSignal.Data\obj\Debug\SkillSignal.Data.dll
-C:\Development\SkillSignal\SkillSignal.Data\obj\Debug\SkillSignal.Data.pdb
