@@ -6,9 +6,13 @@ C:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\Microsoft.Threading.
 C:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
 C:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\Microsoft.Threading.Tasks.xml
 C:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
-D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\SkillSignal.Repository.dll.config
-D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\SkillSignal.Repository.dll
 D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\SkillSignal.Repository.pdb
+D:\Development\SkillSignal\SkillSignal.Repository\obj\Debug\SkillSignal.Repository.dll
+D:\Development\SkillSignal\SkillSignal.Repository\obj\Debug\SkillSignal.Repository.pdb
+D:\Development\SkillSignal\SkillSignal.Repository\obj\Debug\SkillSignal.Repository.csprojResolveAssemblyReference.cache
+D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\SkillSignal.RepositoryNew.dll.config
+D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\SkillSignal.RepositoryNew.dll
+D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\SkillSignal.RepositoryNew.pdb
 D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\EntityFramework.dll
 D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\LinqKit.dll
 D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\Microsoft.Threading.Tasks.dll
@@ -22,6 +26,5 @@ D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\SkillSignal.IReposit
 D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\EntityFramework.xml
 D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\Microsoft.Threading.Tasks.xml
 D:\Development\SkillSignal\SkillSignal.Repository\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
-D:\Development\SkillSignal\SkillSignal.Repository\obj\Debug\SkillSignal.Repository.csprojResolveAssemblyReference.cache
-D:\Development\SkillSignal\SkillSignal.Repository\obj\Debug\SkillSignal.Repository.dll
-D:\Development\SkillSignal\SkillSignal.Repository\obj\Debug\SkillSignal.Repository.pdb
+D:\Development\SkillSignal\SkillSignal.Repository\obj\Debug\SkillSignal.RepositoryNew.dll
+D:\Development\SkillSignal\SkillSignal.Repository\obj\Debug\SkillSignal.RepositoryNew.pdb

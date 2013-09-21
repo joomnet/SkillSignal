@@ -1,0 +1,165 @@
+[1mdiff --git a/SkillSignal.BusinessLayer/ProjectService.cs b/SkillSignal.BusinessLayer/ProjectService.cs[m
+[1mindex 0a6547b..d09a00c 100644[m
+[1m--- a/SkillSignal.BusinessLayer/ProjectService.cs[m
+[1m+++ b/SkillSignal.BusinessLayer/ProjectService.cs[m
+[36m@@ -20,9 +20,9 @@[m
+             return !this.dalContext.Projects.Contains(x => x.ID == projectId) ? Project.NullProject : null;[m
+         }[m
+ [m
+[31m-        public void Create(string projectName)[m
+[32m+[m[32m        public Project Create(string projectName)[m
+         {[m
+[31m-            this.dalContext.Projects.Create(new Project {Name = projectName, ID = Guid.NewGuid().ToString()});[m
+[32m+[m[32m           return this.dalContext.Projects.Create(new Project {Name = projectName, ID = Guid.NewGuid().ToString()});[m
+         }[m
+     }[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/SkillSignal.BusinessLayer/SkillSignal.BusinessLayer.csproj b/SkillSignal.BusinessLayer/SkillSignal.BusinessLayer.csproj[m
+[1mindex f0f1fae..ea2f9a2 100644[m
+[1m--- a/SkillSignal.BusinessLayer/SkillSignal.BusinessLayer.csproj[m
+[1m+++ b/SkillSignal.BusinessLayer/SkillSignal.BusinessLayer.csproj[m
+[36m@@ -1,92 +1 @@[m
+[31m-﻿<?xml version="1.0" encoding="utf-8"?>[m
+[31m-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">[m
+[31m-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />[m
+[31m-  <PropertyGroup>[m
+[31m-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>[m
+[31m-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>[m
+[31m-    <ProductVersion>8.0.50727</ProductVersion>[m
+[31m-    <SchemaVersion>2.0</SchemaVersion>[m
+[31m-    <ProjectGuid>{15B3E0D2-6217-493A-A690-158C497F5318}</ProjectGuid>[m
+[31m-    <OutputType>Library</OutputType>[m
+[31m-    <AppDesignerFolder>Properties</AppDesignerFolder>[m
+[31m-    <RootNamespace>SkillSignal.BusinessLayer</RootNamespace>[m
+[31m-    <AssemblyName>SkillSignal.BusinessLayer</AssemblyName>[m
+[31m-    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>[m
+[31m-    <StartArguments>/client:"WcfTestClient.exe"</StartArguments>[m
+[31m-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>[m
+[31m-    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>[m
+[31m-    <XsdCodeGenEnabled>True</XsdCodeGenEnabled>[m
+[31m-  </PropertyGroup>[m
+[31m-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">[m
+[31m-    <DebugSymbols>true</DebugSymbols>[m
+[31m-    <DebugType>full</DebugType>[m
+[31m-    <Optimize>false</Optimize>[m
+[31m-    <OutputPath>bin\Debug\</OutputPath>[m
+[31m-    <DefineConstants>DEBUG;TRACE</DefineConstants>[m
+[31m-    <ErrorReport>prompt</ErrorReport>[m
+[31m-    <WarningLevel>4</WarningLevel>[m
+[31m-  </PropertyGroup>[m
+[31m-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">[m
+[31m-    <DebugType>pdbonly</DebugType>[m
+[31m-    <Optimize>true</Optimize>[m
+[31m-    <OutputPath>bin\Release\</OutputPath>[m
+[31m-    <DefineConstants>TRACE</DefineConstants>[m
+[31m-    <ErrorReport>prompt</ErrorReport>[m
+[31m-    <WarningLevel>4</WarningLevel>[m
+[31m-  </PropertyGroup>[m
+[31m-  <ItemGroup>[m
+[31m-    <Reference Include="Microsoft.CSharp" />[m
+[31m-    <Reference Include="System" />[m
+[31m-    <Reference Include="System.Core" />[m
+[31m-    <Reference Include="System.Data" />[m
+[31m-    <Reference Include="System.Runtime.Serialization" />[m
+[31m-    <Reference Include="System.ServiceModel" />[m
+[31m-    <Reference Include="System.Xml" />[m
+[31m-    <Reference Include="System.Xml.Linq" />[m
+[31m-  </ItemGroup>[m
+[31m-  <ItemGroup>[m
+[31m-    <Compile Include="ProjectService.cs" />[m
+[31m-    <Compile Include="Properties\AssemblyInfo.cs" />[m
+[31m-    <Compile Include="UserService.cs" />[m
+[31m-  </ItemGroup>[m
+[31m-  <ItemGroup>[m
+[31m-    <None Include="App.config" />[m
+[31m-  </ItemGroup>[m
+[31m-  <ItemGroup>[m
+[31m-    <ProjectReference Include="..\SkillSignal.Domain\SkillSignal.Domain.csproj">[m
+[31m-      <Project>{C7C34B50-BE08-4A00-AE1D-F0214BC198A1}</Project>[m
+[31m-      <Name>SkillSignal.Domain</Name>[m
+[31m-    </ProjectReference>[m
+[31m-    <ProjectReference Include="..\SkillSignal.IBusinessLayer\SkillSignal.IBusinessLayer.csproj">[m
+[31m-      <Project>{fd8c4516-8b45-4cfb-8a0d-e6785bf7409f}</Project>[m
+[31m-      <Name>SkillSignal.IBusinessLayer</Name>[m
+[31m-    </ProjectReference>[m
+[31m-    <ProjectReference Include="..\SkillSignal.IRepository\SkillSignal.IRepository.csproj">[m
+[31m-      <Project>{e76fc085-dc2c-4faf-972c-d595d5ab7840}</Project>[m
+[31m-      <Name>SkillSignal.IRepository</Name>[m
+[31m-    </ProjectReference>[m
+[31m-  </ItemGroup>[m
+[31m-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />[m
+[31m-  <PropertyGroup>[m
+[31m-    <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>[m
+[31m-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio</VSToolsPath>[m
+[31m-    <WcfServiceModelTargetPath>$(VSToolsPath)\WCF</WcfServiceModelTargetPath>[m
+[31m-  </PropertyGroup>[m
+[31m-  <Import Project="$(WcfServiceModelTargetPath)\Microsoft.VisualStudio.ServiceModel.targets" />[m
+[31m-  <ProjectExtensions>[m
+[31m-    <VisualStudio>[m
+[31m-      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">[m
+[31m-        <WcfProjectProperties>[m
+[31m-          <AutoStart>True</AutoStart>[m
+[31m-        </WcfProjectProperties>[m
+[31m-      </FlavorProperties>[m
+[31m-    </VisualStudio>[m
+[31m-  </ProjectExtensions>[m
+[31m-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. [m
+[31m-       Other similar extension points exist, see Microsoft.Common.targets.[m
+[31m-  <Target Name="BeforeBuild">[m
+[31m-  </Target>[m
+[31m-  <Target Name="AfterBuild">[m
+[31m-  </Target>[m
+[31m-  -->[m
+[31m-</Project>[m
+\ No newline at end of file[m
+[32m+[m[32mBuilding default target[m[41m [m
+\ No newline at end of file[m
+[1mdiff --git a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.BusinessLayer.dll b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.BusinessLayer.dll[m
+[1mindex 91b2e62..d462775 100644[m
+Binary files a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.BusinessLayer.dll and b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.BusinessLayer.dll differ
+[1mdiff --git a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.BusinessLayer.pdb b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.BusinessLayer.pdb[m
+[1mindex 8c53986..c5cb762 100644[m
+Binary files a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.BusinessLayer.pdb and b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.BusinessLayer.pdb differ
+[1mdiff --git a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.Domain.dll b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.Domain.dll[m
+[1mindex db98f65..d1ac97c 100644[m
+Binary files a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.Domain.dll and b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.Domain.dll differ
+[1mdiff --git a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.Domain.pdb b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.Domain.pdb[m
+[1mindex 9f46cb8..55e4e6d 100644[m
+Binary files a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.Domain.pdb and b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.Domain.pdb differ
+[1mdiff --git a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IBusinessLayer.dll b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IBusinessLayer.dll[m
+[1mindex 36cdba2..79bd02f 100644[m
+Binary files a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IBusinessLayer.dll and b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IBusinessLayer.dll differ
+[1mdiff --git a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IBusinessLayer.pdb b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IBusinessLayer.pdb[m
+[1mindex eac1c62..a55c1e8 100644[m
+Binary files a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IBusinessLayer.pdb and b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IBusinessLayer.pdb differ
+[1mdiff --git a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IRepository.dll b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IRepository.dll[m
+[1mindex 54011e2..805c1de 100644[m
+Binary files a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IRepository.dll and b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IRepository.dll differ
+[1mdiff --git a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IRepository.pdb b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IRepository.pdb[m
+[1mindex 4f19d14..5c03c1e 100644[m
+Binary files a/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IRepository.pdb and b/SkillSignal.BusinessLayer/bin/Debug/SkillSignal.IRepository.pdb differ
+[1mdiff --git a/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.csprojResolveAssemblyReference.cache b/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.csprojResolveAssemblyReference.cache[m
+[1mindex 3332c08..bbfadf5 100644[m
+Binary files a/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.csprojResolveAssemblyReference.cache and b/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.csprojResolveAssemblyReference.cache differ
+[1mdiff --git a/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.dll b/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.dll[m
+[1mindex 91b2e62..d462775 100644[m
+Binary files a/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.dll and b/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.dll differ
+[1mdiff --git a/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.pdb b/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.pdb[m
+[1mindex 8c53986..c5cb762 100644[m
+Binary files a/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.pdb and b/SkillSignal.BusinessLayer/obj/Debug/SkillSignal.BusinessLayer.pdb differ
+[1mdiff --git a/SkillSignal.BusinessLayer/obj/Debug/WcfConfigValidationData.tmp b/SkillSignal.BusinessLayer/obj/Debug/WcfConfigValidationData.tmp[m
+[1mindex 021b98f..212a3ae 100644[m
+[1m--- a/SkillSignal.BusinessLayer/obj/Debug/WcfConfigValidationData.tmp[m
+[1m+++ b/SkillSignal.BusinessLayer/obj/Debug/WcfConfigValidationData.tmp[m
+[36m@@ -1 +1 @@[m
+[31m-<ValidationRecord xmlns="http://schemas.datacontract.org/2004/07/Microsoft.VisualStudio.ServiceModel.Validation" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><TimeStamps xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:dateTime>2013-09-15T20:18:28.6099997Z</a:dateTime><a:dateTime>2013-09-16T13:23:53.5149997Z</a:dateTime><a:dateTime>2013-09-11T14:10:22.0918Z</a:dateTime></TimeStamps></ValidationRecord>[m
+\ No newline at end of file[m
+[32m+[m[32m<ValidationRecord xmlns="http://schemas.datacontract.org/2004/07/Microsoft.VisualStudio.ServiceModel.Validation" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><TimeStamps xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:dateTime>2013-09-15T20:18:28.6099997Z</a:dateTime><a:dateTime>2013-09-18T18:28:29.1488Z</a:dateTime><a:dateTime>2013-09-11T14:10:22.0918Z</a:dateTime></TimeStamps></ValidationRecord>[m
+\ No newline at end of file[m
+[1mdiff --git a/SkillSignal.Common/bin/Debug/SkillSignal.Common.dll b/SkillSignal.Common/bin/Debug/SkillSignal.Common.dll[m
+[1mindex 2707374..5ececb6 100644[m
+Binary files a/SkillSignal.Common/bin/Debug/SkillSignal.Common.dll and b/SkillSignal.Common/bin/Debug/SkillSignal.Common.dll differ
+[1mdiff --git a/SkillSignal.Common/bin/Debug/SkillSignal.Common.pdb b/SkillSignal.Common/bin/Debug/SkillSignal.Common.pdb[m
+[1mindex 3d6426f..3bc8fb1 100644[m
+Binary files a/SkillSignal.Comm

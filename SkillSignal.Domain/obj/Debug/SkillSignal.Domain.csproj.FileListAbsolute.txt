@@ -12,6 +12,5 @@ D:\Development\SkillSignal\SkillSignal.Domain\bin\Debug\Microsoft.Threading.Task
 D:\Development\SkillSignal\SkillSignal.Domain\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
 D:\Development\SkillSignal\SkillSignal.Domain\bin\Debug\Microsoft.Threading.Tasks.xml
 D:\Development\SkillSignal\SkillSignal.Domain\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
-D:\Development\SkillSignal\SkillSignal.Domain\obj\Debug\SkillSignal.Domain.csprojResolveAssemblyReference.cache
 D:\Development\SkillSignal\SkillSignal.Domain\obj\Debug\SkillSignal.Domain.dll
 D:\Development\SkillSignal\SkillSignal.Domain\obj\Debug\SkillSignal.Domain.pdb

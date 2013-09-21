@@ -9,11 +9,11 @@
 
     public class UserService : IUserService
     {
-        readonly IDALContext _dalContext;
+        readonly IDALContext dalContext;
 
         public UserService(IDALContext dalContext)
         {
-            this._dalContext = dalContext;
+            this.dalContext = dalContext;
         }
 
         public UserService()
@@ -28,22 +28,27 @@
 
         public IEnumerable<UserAccount> Where(Func<UserAccount, bool> userFilter)
         {
-            return this._dalContext.Users.Filter(x => userFilter(x));
+            return this.dalContext.Users.Filter(x => userFilter(x));
         }
 
         public void SaveOrUpdate(UserAccount userAccount)
         {
-            this._dalContext.Users.Create(userAccount);
+            this.dalContext.Users.Create(userAccount);
         }
 
         public void Delete(string id)
         {
-            var deleted = this._dalContext.Users.Delete(user => user.Id == id);
+            var deleted = this.dalContext.Users.Delete(user => user.Id == id);
         }
 
         public IEnumerable<UserAccount> GetActiveUsers()
         {
-            return this._dalContext.Users.Filter(x => x.IsActive);
+            return this.dalContext.Users.Filter(x => x.IsActive);
+        }
+
+        public IEnumerable<UserAccount> GetAllUsers()
+        {
+            return this.dalContext.Users.All();
         }
     }
 }

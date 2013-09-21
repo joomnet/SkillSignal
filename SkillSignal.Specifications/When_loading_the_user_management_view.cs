@@ -14,8 +14,11 @@ using SkillSignal.ViewModels.Users;
 
 namespace SkillSignal.Specifications
 {
+    using System.Windows.Input;
+
     using Microsoft.Practices.Unity;
 
+    using SkillSignal.BootStrapper;
     using SkillSignal.DependencyResolution;
     using SkillSignal.IRepository;
     using SkillSignal.ServiceClients;
@@ -24,6 +27,8 @@ namespace SkillSignal.Specifications
     {
         Establish context = () =>
             {
+                var bootStrapper = new ApplicationBootStrapper(new UnityContainer());
+               
                 _userRepositoryMock = new Mock<IUserAccountRepository>();
                 _userRepositoryMock.Setup(repo => repo.Filter(Moq.It.IsAny<Expression<Func<UserAccount, bool>>>()))
                                   .Returns(
@@ -36,20 +41,16 @@ namespace SkillSignal.Specifications
 
                                               }));
 
-                var dalContext = new Mock<IDALContext>();
-                dalContext.SetupGet(d => d.Users).Returns(_userRepositoryMock.Object);
-
-
-                _pageNavigationService = new PageNavigationService(new UserServiceClient(), new ViewModelFactory(new UnityContainer()));
-                _userManagementViewModel = new UserManagementViewModel(_pageNavigationService, new UserService(dalContext.Object));
-                _userManagementViewModel.IsSelected = true;
-                Thread.Sleep(2000);
+                //var dalContext = new Mock<IDALContext>();
+                //dalContext.SetupGet(d => d.Users).Returns(_userRepositoryMock.Object);
+                bootStrapper.With(_userRepositoryMock.Object);
+                _userManagementViewModel = bootStrapper.Resolve<UserManagementViewModel>();
+                _userManagementViewModel.Load.Execute(null);
+                Thread.Sleep(5000);
             };
         protected static UserManagementViewModel _userManagementViewModel;
 
         protected static Mock<IUserAccountRepository> _userRepositoryMock;
-
-        protected static PageNavigationService _pageNavigationService;
     }
 
     public class and_the_view_is_selected : When_loading_the_user_management_view
@@ -65,11 +66,8 @@ namespace SkillSignal.Specifications
         Because of =
             () =>
                 {
-                    _userManagementViewModel.IsSelected = true;
-                    Thread.Sleep(2000);
                     (_userManagementViewModel.UserCollection.First().Edit as AsyncRelayCommand).ExecuteAsync(null);
                     (_userManagementViewModel.UserCollection.Skip(1).First().Edit as AsyncRelayCommand).ExecuteAsync(null);
-                    Thread.Sleep(2000);
                 };
 
         It the_user_should_be_marked_as_edittable =

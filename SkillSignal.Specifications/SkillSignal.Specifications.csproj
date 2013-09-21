@@ -80,7 +80,6 @@
     <Compile Include="When_loading_a_project.cs" />
     <Compile Include="When_loading_main_application.cs" />
     <Compile Include="When_loading_the_user_management_view.cs" />
-    <Compile Include="When_logging_in.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

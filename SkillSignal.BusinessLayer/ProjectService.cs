@@ -17,12 +17,12 @@
 
         public Project Load(string projectId)
         {
-            return !this.dalContext.Projects.Contains(x => x.ID == projectId) ? Project.NullProject : null;
+            return !this.dalContext.Projects.Contains(x => x.ID == projectId) ? Project.NullProject : dalContext.Projects.Find(p => p.ID == projectId);
         }
 
-        public void Create(string projectName)
+        public Project Create(string projectName)
         {
-            this.dalContext.Projects.Create(new Project {Name = projectName, ID = Guid.NewGuid().ToString()});
+           return this.dalContext.Projects.Create(new Project {Name = projectName, ID = Guid.NewGuid().ToString()});
         }
     }
 }

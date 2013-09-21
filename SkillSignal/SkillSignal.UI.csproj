@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BootStrapper\ApplicationBootStrapper.cs" />
     <Compile Include="Commands\DisplayableNavigationCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Service References\WCFUserService\Reference.cs">

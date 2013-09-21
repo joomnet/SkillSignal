@@ -13,6 +13,7 @@ namespace SkillSignal.Specifications
 
     using Microsoft.Practices.Unity;
 
+    using SkillSignal.BootStrapper;
     using SkillSignal.BusinessLayer;
     using SkillSignal.DependencyResolution;
     using SkillSignal.IBusinessLayer;
@@ -34,34 +35,6 @@ namespace SkillSignal.Specifications
         protected static INavigationService _viewNavigationService;
     }
 
-    public class ApplicationBootStrapper
-    {
-        readonly IUnityContainer unityContainer;
-
-        public ApplicationBootStrapper(IUnityContainer unityContainer)
-        {
-            this.unityContainer = unityContainer;
-            unityContainer.RegisterType<UserManagementViewModel, UserManagementViewModel>()
-                              .RegisterType<IUserService, UserServiceClient>()
-                              .RegisterType<INavigationService, PageNavigationService>()
-                              .RegisterType<IViewModelFactory, ViewModelFactory>()
-                              .RegisterType<IProjectService, ProjectServiceClient>()
-                              .RegisterType<IDALContext, DALContext>()
-                              .RegisterType<IUserAccountRepository, UserAccountRepository>()
-                              .RegisterType<IProjectRepository, ProjectRepository>()
-                              .RegisterType<IApplicationViewModel, ApplicationViewModel>()
-                              .RegisterType<ICreateProjectViewModel, CreateProjectViewModel>()
-                              .RegisterType<VATViewModel, VATViewModel>()
-                              .RegisterType<DepositViewModel, DepositViewModel>()
-                              .RegisterType<PurchaseLedgerViewModel, PurchaseLedgerViewModel>()
-                              .RegisterInstance(unityContainer);
-        }
-
-        public T Resolve<T>()
-        {
-            return unityContainer.Resolve<T>();
-        }
-    }
 
     public class and_the_user_management_button_is_clicked : When_loading_main_application
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{6AB6D6B9-C201-47DD-9644-65B6756B9A78}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SkillSignal.DependencyInjection</RootNamespace>
-    <AssemblyName>SkillSignal.DependencyInjection</AssemblyName>
+    <RootNamespace>SkillSignal.Server</RootNamespace>
+    <AssemblyName>SkillSignal.Server</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

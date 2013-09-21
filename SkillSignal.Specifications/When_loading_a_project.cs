@@ -18,6 +18,7 @@ namespace SkillSignal.Specifications
 
     using Microsoft.Practices.Unity;
 
+    using SkillSignal.BootStrapper;
     using SkillSignal.DependencyResolution;
     using SkillSignal.IRepository;
     using SkillSignal.ServiceClients;
@@ -29,17 +30,7 @@ namespace SkillSignal.Specifications
         {
             IUnityContainer unityContainer = new UnityContainer();
             var bootStrapper = new ApplicationBootStrapper(unityContainer);
-
-            //_projectRepository = new Mock<IProjectRepository>();
-            //_projectRepository.Setup(x => x.Create(Moq.It.IsAny<Project>())).Returns(new Project());
-
-            //var dalContextMock = new Mock<IDALContext>();
-            //dalContextMock.SetupGet(dal => dal.Projects).Returns(_projectRepository.Object);
-
-            //var viewNavigationService = new PageNavigationService(new UserServiceClient(), new ViewModelFactory(new UnityContainer()));
-            //ICreateProjectViewModel createProjectViewModel = new CreateProjectViewModel(new ProjectService(dalContextMock.Object),viewNavigationService );
             _applicationViewModel = bootStrapper.Resolve<IApplicationViewModel>();
-                // new ApplicationViewModel(createProjectViewModel, viewNavigationService, new UserService(dalContextMock.Object));
         };
 
         Because of = () =>

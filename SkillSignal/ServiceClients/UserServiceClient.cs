@@ -40,5 +40,10 @@ namespace SkillSignal.ServiceClients
         {
            return this._userService.GetActiveUsers();
         }
+
+        public IEnumerable<UserAccount> GetAllUsers()
+        {
+            return this._userService.WhereAsync(u => u != null).Result;
+        }
     }
 }

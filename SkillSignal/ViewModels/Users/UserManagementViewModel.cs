@@ -9,6 +9,8 @@ using SkillSignal.Common;
 
 namespace SkillSignal.ViewModels.Users
 {
+    using System.Windows.Input;
+
     using Microsoft.Practices.Unity;
 
     using SkillSignal.DependencyResolution;
@@ -30,6 +32,7 @@ namespace SkillSignal.ViewModels.Users
         {
             this._userService = userService;
             Title = "User Mgt";
+            Load = new AsyncRelayCommand(() => _Load(), () => true);
         }
 
         public ObservableCollection<UserAccountViewModel> UserCollection
@@ -51,9 +54,11 @@ namespace SkillSignal.ViewModels.Users
             }
         }
 
-        async void _Load()
+        public ICommand Load { get; set; }
+
+        async Task _Load()
         {
-            var userAccounts = await TaskEx.Run(() => this._userService.GetActiveUsers());
+            var userAccounts = await TaskEx.Run(() => this._userService.GetAllUsers());
             UserCollection = new ObservableCollection<UserAccountViewModel>(userAccounts.Select(x => new UserAccountViewModel(x.Id, ViewNavigationService, x.IsActive)
                 {
                     FirstName = x.FirstName, 

@@ -23,5 +23,8 @@
 
         [OperationContract]
         IEnumerable<UserAccount> GetActiveUsers();
+
+        [OperationContract]
+        IEnumerable<UserAccount> GetAllUsers();
     }
 }
