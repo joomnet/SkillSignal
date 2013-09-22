@@ -5,53 +5,48 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-using SkillSignal.Repository;
 using SkillSignal.Commands;
-using SkillSignal.ViewModels.Project;
-using SkillSignal.ViewModels.Users;
+using Microsoft.Practices.Unity;
+using SkillSignal.Common;
+using SkillSignal.DependencyResolution;
+using SkillSignal.IBusinessLayer;
+using SkillSignal.ServiceClients;
 
 namespace SkillSignal.ViewModels
 {
-    using SkillSignal.Common;
-    using SkillSignal.DependencyResolution;
-    using SkillSignal.IBusinessLayer;
-    using SkillSignal.ServiceClients;
 
     public class DesignTimeApplicationViewModel : ApplicationViewModel
     {
-        private static readonly INavigationService PageNavigationService = new PageNavigationService(new UserServiceClient(), new ViewModelFactory(null));
+        private static new readonly INavigationService PageNavigationService = new PageNavigationService(new ViewModelFactory(null));
 
         public DesignTimeApplicationViewModel()
-            : base(new CreateProjectViewModel(new ProjectServiceClient(), PageNavigationService), PageNavigationService, new UserServiceClient())
+            : base(PageNavigationService, new UserServiceClient(), new ViewModelFactory(new UnityContainer()))
         {
             this.ApplicationDialog = null;
 
             this.LeftNavigationButtonCollection = new List<DisplayableNavigationCommand>()
             {
-                new DisplayableNavigationCommand("Purchase ledger", () => TaskEx.Run(() => base.PageNavigationService.CurrentPage = new PurchaseLedgerViewModel(null)), () => true),
-                new DisplayableNavigationCommand("VAT", () => TaskEx.Run(() => base.PageNavigationService.CurrentPage = new PurchaseLedgerViewModel(null)), () => true),
-                new DisplayableNavigationCommand("Deposits", () => TaskEx.Run(() => base.PageNavigationService.CurrentPage = new PurchaseLedgerViewModel(null)), () => true)
+                new DisplayableNavigationCommand("Purchase ledger", () => TaskEx.Run(() => ViewNavigationService.CurrentPage = new PurchaseLedgerViewModel(null)), () => true),
+                new DisplayableNavigationCommand("VAT", () => TaskEx.Run(() => ViewNavigationService.CurrentPage = new PurchaseLedgerViewModel(null)), () => true),
+                new DisplayableNavigationCommand("Deposits", () => TaskEx.Run(() => ViewNavigationService.CurrentPage = new PurchaseLedgerViewModel(null)), () => true)
             };
         }
     }
 
     public class ApplicationViewModel : ViewModel, IApplicationViewModel
     {
-        private object _applicationDialog;
+        readonly IViewModelFactory viewModelFactory;
 
-        public ProjectViewModel CurrentProject { get; set; }
+        private object _applicationDialog;
 
         private void _GoForward()
         {
-            this.PageNavigationService.CurrentPage = new ProjectDashBoardViewModel(this.PageNavigationService)
-                {
-                    Title = "hello"
-                };
+
         }
 
         private void _GoBack()
         {
-            this.PageNavigationService.CurrentPage = new QuestionViewModel(this.PageNavigationService)
+            this.ViewNavigationService.CurrentPage = new QuestionViewModel(this.ViewNavigationService)
             {
                 Title = "hello"
             };
@@ -69,24 +64,18 @@ namespace SkillSignal.ViewModels
             set { this.SetProperty(ref this._applicationDialog, value, () => this.ApplicationDialog); }
         }
 
-        public ICreateProjectViewModel CreateProjectViewModel { get; set; }
-        public INavigationService PageNavigationService { get; set; }
+        public new INavigationService ViewNavigationService { get; set; }
 
         public List<DisplayableNavigationCommand> LeftNavigationButtonCollection { get; set; }
 
-        public ApplicationViewModel(ICreateProjectViewModel createProjectViewModel, INavigationService pageNavigationService, IUserService userService)
+        public ApplicationViewModel(INavigationService viewNavigationService, IUserService userService, IViewModelFactory viewModelFactory)
         {
-            ObjectValidator.IfNullThrowException(createProjectViewModel, "createProjectViewModel");
-            ObjectValidator.IfNullThrowException(pageNavigationService, "pageNavigationService");
+            ObjectValidator.IfNullThrowException(viewNavigationService, "viewNavigationService");
             ObjectValidator.IfNullThrowException(userService,  "userService");
+            ObjectValidator.IfNullThrowException(viewModelFactory, "viewModelFactory");
 
-            this.CreateProjectViewModel = createProjectViewModel;
-            this.PageNavigationService = pageNavigationService;
-            //this.CurrentProject = new ProjectViewModel(pageNavigationService)
-            //{
-            //    Title = "My Test Project",
-            //    CurrentPage = new ProjectDashBoardViewModel(pageNavigationService),
-            //};
+            this.viewModelFactory = viewModelFactory;
+            this.ViewNavigationService = viewNavigationService;
 
             this.Back = new RelayCommand(o => this._GoBack(), o => true);
             this.Forward = new RelayCommand(o => this._GoForward(), o => true);
@@ -94,17 +83,39 @@ namespace SkillSignal.ViewModels
 
             this.LeftNavigationButtonCollection = new List<DisplayableNavigationCommand>();
 
-
-            PageNavigationService.GetPagesByNames().Each(page => this.LeftNavigationButtonCollection.Add(
+            /*All this behaviour needs to be moved to a loaded command*/
+            this.ViewNavigationService.CurrentPage = viewModelFactory.Get<StartPageViewModel>();
+            ViewNavigationService.GetDefaultPagesByNames().Each(page => this.LeftNavigationButtonCollection.Add(
                                                                     new DisplayableNavigationCommand(
                                                                      page.Key,
-                                                                     async () => await TaskEx.Run(() => this.PageNavigationService.CurrentPage = page.Value()),
+                                                                     async () => await TaskEx.Run(() => ViewNavigationService.CurrentPage = page.Value()),
                                                                      () => true)));
+
+            ViewNavigationService.PageChanged += async (sender, args) =>
+            {
+                if ((ViewNavigationService.CurrentPage as ProjectDashBoardViewModel) != null)
+                {
+                    await this._LoadNonDefaultPages();
+                }
+            };
+        }
+
+        async Task _LoadNonDefaultPages()
+        {
+            this.LeftNavigationButtonCollection.Clear();
+            this.ViewNavigationService.GetPagesByNames()
+                .Each(
+                    page =>
+                        this.LeftNavigationButtonCollection.Add(
+                            new DisplayableNavigationCommand(
+                                page.Key,
+                                async () => await TaskEx.Run(() => this.ViewNavigationService.CurrentPage = page.Value()),
+                                () => true)));
         }
 
         public Task DisplayPage(IPageViewModel pageViewModel)  
         {
-            return TaskEx.Run(() => this.PageNavigationService.CurrentPage = pageViewModel);
+            return TaskEx.Run(() => ViewNavigationService.CurrentPage = pageViewModel);
         }
 
         void _Close()

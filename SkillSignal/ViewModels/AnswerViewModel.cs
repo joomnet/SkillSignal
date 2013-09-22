@@ -4,7 +4,6 @@ namespace SkillSignal.ViewModels
 
     using SkillSignal.BusinessLayer;
     using SkillSignal.DependencyResolution;
-    using SkillSignal.ServiceClients;
 
     public class AnswerViewModel : PageViewModel
     {
@@ -43,7 +42,7 @@ namespace SkillSignal.ViewModels
     {
 
         public DesignTimeAnswerViewModel()
-            : base(new PageNavigationService(new UserServiceClient(), new ViewModelFactory(new UnityContainer())), "The Capital city of the United Kingdom", false, false)
+            : base(new PageNavigationService(new ViewModelFactory(new UnityContainer())), "The Capital city of the United Kingdom", false, false)
         {
             this.Text = "The Capital city of the United Kingdom";
             this.IsSelected = false;

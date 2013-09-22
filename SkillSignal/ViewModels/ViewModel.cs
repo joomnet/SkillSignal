@@ -6,6 +6,8 @@ using SkillSignal.Common;
 
 namespace SkillSignal.ViewModels
 {
+    using System.Threading.Tasks;
+    using System.Windows.Input;
 
     public class ViewModel : INotifyPropertyChanged
     {
@@ -34,6 +36,29 @@ namespace SkillSignal.ViewModels
                 OnPropertyChanged(property.Name);
             }
             return changed;
+        }
+
+        protected void SetProperty<T>(ref T member, T value, Expression<Func<T>> property, Action valueChangedAction)
+        {
+            var changed = SetProperty(ref member, value, property);
+            if (changed)
+            {
+                valueChangedAction();
+            }
+        }
+
+        public ICommand Load { get; set; }
+
+        public ViewModel()
+        {
+            Load = new AsyncRelayCommand(this._Load, () => true);
+        }
+
+        protected virtual Task _Load()
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            tcs.SetResult(true);
+            return tcs.Task;
         }
     }
 }

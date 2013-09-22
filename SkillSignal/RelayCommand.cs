@@ -25,10 +25,10 @@ namespace SkillSignal
 
         public void Execute(object parameter)
         {
-            _action();
+            this.ExecuteAsync(parameter);
         }
 
-        public async void ExecuteAsync(object parameter)
+        public async Task ExecuteAsync(object parameter)
         {
            await  _action();
         }

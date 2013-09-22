@@ -5,7 +5,8 @@
                     xmlns:login="clr-namespace:SkillSignal.ViewModels.Login"
                     xmlns:login2="clr-namespace:SkillSignal.Views.Login"
                     xmlns:users="clr-namespace:SkillSignal.ViewModels.Users"
-                    xmlns:users1="clr-namespace:SkillSignal.Views.Users">
+                    xmlns:users1="clr-namespace:SkillSignal.Views.Users"
+                    xmlns:project="clr-namespace:SkillSignal.ViewModels.Project">
     <DataTemplate DataType="{x:Type viewModels:ProjectDashBoardViewModel}">
         <views:ProjectDashboardView></views:ProjectDashboardView>
     </DataTemplate>
@@ -20,5 +21,8 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type users:UserManagementViewModel}">
         <users1:UserManagementView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type project:CreateProjectViewModel}">
+        <views:CreateProjectView/>
     </DataTemplate>
 </ResourceDictionary>

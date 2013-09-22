@@ -122,7 +122,7 @@
 
 
         <!--<Rectangle Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Fill="#992F6D1D"></Rectangle>-->
-        <ContentControl Grid.Column="1" Grid.Row="2" Content="{Binding PageNavigationService.CurrentPage}"></ContentControl >
+        <ContentControl Grid.Column="1" Grid.Row="2" Content="{Binding ViewNavigationService.CurrentPage}"></ContentControl >
     </Grid>
     </Grid>
 

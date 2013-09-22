@@ -1,34 +1,40 @@
 ﻿using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using SkillSignal.DependencyResolution;
+using SkillSignal.ViewModels.Project;
+using SkillSignal.ViewModels.Users;
 
 namespace SkillSignal.ViewModels
 {
-    using System;
-    using System.Collections.Generic;
-
-    using SkillSignal.DependencyResolution;
-    using SkillSignal.IBusinessLayer;
-    using SkillSignal.ServiceClients;
-    using SkillSignal.ViewModels.Project;
-    using SkillSignal.ViewModels.Users;
 
     public class PageNavigationService : ViewModel, INavigationService
     {
-        readonly IUserService userService;
-
         readonly IViewModelFactory viewModelFactory;
 
         private IPageViewModel _currentPage;
 
-        public PageNavigationService(IUserService userService, IViewModelFactory viewModelFactory)
+        public PageNavigationService(IViewModelFactory viewModelFactory)
         {
-            this.userService = userService;
             this.viewModelFactory = viewModelFactory;
         }
 
         public IPageViewModel CurrentPage
         {
             get { return _currentPage; }
-            set { SetProperty(ref _currentPage, value, () => CurrentPage); }
+            set
+            {
+                SetProperty(ref _currentPage, value, () => CurrentPage, RaisePageChangedEvent);
+            }
+        }
+
+        void RaisePageChangedEvent()
+        {
+            var handler = PageChanged;
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
+            }
         }
 
         public Dictionary<string, Func<IPageViewModel>> GetPagesByNames()
@@ -40,8 +46,7 @@ namespace SkillSignal.ViewModels
                     { viewModelFactory.Get<DepositViewModel>().Title, () => viewModelFactory.Get<DepositViewModel>() },
                     { viewModelFactory.Get<UserManagementViewModel>().Title, () =>
                         {
-                            var userManagementViewModel = viewModelFactory.Get<UserManagementViewModel>();//new UserManagementViewModel(this, userService); 
-                            //this.CurrentPage = userManagementViewModel;
+                            var userManagementViewModel = viewModelFactory.Get<UserManagementViewModel>(); 
                             userManagementViewModel.IsSelected = true;
                             return userManagementViewModel; 
                         }
@@ -54,10 +59,12 @@ namespace SkillSignal.ViewModels
         {
             return new Dictionary<string, Func<IPageViewModel>>
                 {
-                    //{ "New", () => new CreateProjectViewModel(new ProjectServiceClient(), ) },
+                    { "New", () => viewModelFactory.Get<CreateProjectViewModel>()},
                     { "Open", () => new PurchaseLedgerViewModel(this) }, 
                 };
         }
+
+        public event EventHandler PageChanged;
 
         public Task DisplayPage(IPageViewModel pageViewModel)
         {

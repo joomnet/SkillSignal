@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:ViewModels="clr-namespace:SkillSignal"
              xmlns:views="clr-namespace:SkillSignal.Views"
+             xmlns:viewModels="clr-namespace:SkillSignal.ViewModels"
              mc:Ignorable="d" 
-            d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type ViewModels:DesignTimeQuestionViewModel}}"
+            d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type viewModels:DesignTimeQuestionViewModel}}"
              d:DesignHeight="300" d:DesignWidth="400" Foreground="#992F6D1D" Background="White">
     <Grid>
         <Grid.RowDefinitions>

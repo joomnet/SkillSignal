@@ -1,9 +1,32 @@
+using System.Threading.Tasks;
+using System.Windows.Input;
+using SkillSignal.DependencyResolution;
+using SkillSignal.IBusinessLayer;
+
 namespace SkillSignal.ViewModels.Project
 {
-    using System.Threading.Tasks;
-    using System.Windows.Input;
+    using Microsoft.Practices.Unity;
 
-    using SkillSignal.IBusinessLayer;
+    using SkillSignal.Domain;
+
+    public class DesignTimeCreateProjectViewModel : CreateProjectViewModel
+    {
+        static PageNavigationService PageNavigationService = new PageNavigationService(new ViewModelFactory(new UnityContainer()));
+
+        static IProjectService projectServiceClient = new FakeProjectServiceClient();
+        public DesignTimeCreateProjectViewModel()
+            : base(projectServiceClient, PageNavigationService)
+        {
+        }
+    }
+
+    internal class FakeProjectServiceClient : IProjectService
+    {
+        public Project Create(string projectName)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 
     public class CreateProjectViewModel : PageViewModel, ICreateProjectViewModel
     {
@@ -16,7 +39,6 @@ namespace SkillSignal.ViewModels.Project
             this.Create = new AsyncRelayCommand(async () =>
                 {
                     await this._CreateProject();
-                    await this.ViewNavigationService.DisplayPage(new StartPageViewModel(viewNavigationService));
                 },() => true);
         }
 
@@ -24,7 +46,12 @@ namespace SkillSignal.ViewModels.Project
 
         async Task _CreateProject()
         {
-            await Task.Factory.StartNew(() => this.projectServiceClient.Create(this.ProjectName));
+            await TaskEx.Run(
+                () =>
+                {
+                    var newProject = this.projectServiceClient.Create(this.ProjectName);
+                    this.ViewNavigationService.CurrentPage = new ProjectDashBoardViewModel(ViewNavigationService, newProject);
+                });
         }
 
         public ICommand Create { get; set; }

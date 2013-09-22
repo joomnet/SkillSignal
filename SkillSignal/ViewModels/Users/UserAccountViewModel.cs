@@ -58,9 +58,9 @@ namespace SkillSignal.ViewModels.Users
 
         public bool IsActive { get; private set; }
 
-        public ICommand Edit { get; private set; }
+        public AsyncRelayCommand Edit { get; private set; }
 
-        public ICommand Delete { set; get; }
+        public AsyncRelayCommand Delete { set; get; }
 
         public bool IsEdittable
         {

@@ -2,26 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-
 using System.Threading.Tasks;
-
 using SkillSignal.Common;
+using Microsoft.Practices.Unity;
+using SkillSignal.DependencyResolution;
+using SkillSignal.Domain;
+using SkillSignal.IBusinessLayer;
 
 namespace SkillSignal.ViewModels.Users
 {
-    using System.Windows.Input;
 
-    using Microsoft.Practices.Unity;
-
-    using SkillSignal.DependencyResolution;
-    using SkillSignal.Domain;
-    using SkillSignal.IBusinessLayer;
-    using SkillSignal.ServiceClients;
-
-    public class UserManagementViewModel : PageViewModel, IPageViewModel
+    public class UserManagementViewModel : PageViewModel
     {
-
-
         readonly IUserService _userService;
 
         ObservableCollection<UserAccountViewModel> _userCollection;
@@ -32,7 +24,6 @@ namespace SkillSignal.ViewModels.Users
         {
             this._userService = userService;
             Title = "User Mgt";
-            Load = new AsyncRelayCommand(() => _Load(), () => true);
         }
 
         public ObservableCollection<UserAccountViewModel> UserCollection
@@ -48,15 +39,13 @@ namespace SkillSignal.ViewModels.Users
             {
                 if (value)
                 {
-                   this._Load();
+                  this._Load().Wait();
                 }
                 this.SetProperty(ref _isSelected, value, () => IsSelected);
             }
         }
 
-        public ICommand Load { get; set; }
-
-        async Task _Load()
+        protected override async Task _Load()
         {
             var userAccounts = await TaskEx.Run(() => this._userService.GetAllUsers());
             UserCollection = new ObservableCollection<UserAccountViewModel>(userAccounts.Select(x => new UserAccountViewModel(x.Id, ViewNavigationService, x.IsActive)
@@ -125,7 +114,7 @@ namespace SkillSignal.ViewModels.Users
 
     public class DesignTimeUserManagementViewModel : UserManagementViewModel
     {
-        static PageNavigationService pageNavigationService = new PageNavigationService(new UserServiceClient(), new ViewModelFactory(new UnityContainer()));
+        static PageNavigationService pageNavigationService = new PageNavigationService(new ViewModelFactory(new UnityContainer()));
 
         public DesignTimeUserManagementViewModel()
             : base(pageNavigationService, null)

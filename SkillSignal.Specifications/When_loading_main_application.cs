@@ -28,6 +28,7 @@ namespace SkillSignal.Specifications
                 var bootStrapper = new ApplicationBootStrapper(unityContainer);
                 _viewNavigationService = bootStrapper.Resolve<INavigationService>();
                 _applicationViewModel = bootStrapper.Resolve<IApplicationViewModel>();
+                
             };
 
         protected static IApplicationViewModel _applicationViewModel;
@@ -35,15 +36,6 @@ namespace SkillSignal.Specifications
         protected static INavigationService _viewNavigationService;
     }
 
-
-    public class and_the_user_management_button_is_clicked : When_loading_main_application
-    {
-        Because of = () => _applicationViewModel.LeftNavigationButtonCollection.Single(x => x.DisplayText == "User Mgt")
-                                                .ExecuteAsync(null);
-
-        It should_navigate_to_the_user_management_page = () =>
-            _applicationViewModel.PageNavigationService.CurrentPage.ShouldBeOfType<UserManagementViewModel>();
-    }
 
     public class and_no_project_is_selected : When_loading_main_application
     {

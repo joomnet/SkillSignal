@@ -3,6 +3,7 @@ namespace SkillSignal.ViewModels
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using System.Windows.Documents;
 
     public interface INavigationService
     {
@@ -13,5 +14,7 @@ namespace SkillSignal.ViewModels
         Dictionary<string, Func<IPageViewModel>> GetPagesByNames();
 
         Dictionary<string, Func<IPageViewModel>> GetDefaultPagesByNames();
+
+        event EventHandler PageChanged;
     }
 }

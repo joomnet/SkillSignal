@@ -114,6 +114,9 @@
     <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="ViewModels\Users\UserAccountViewModel.cs" />
     <Compile Include="ViewModels\Users\UserManagementViewModel.cs" />
+    <Compile Include="Views\CreateProjectView.xaml.cs">
+      <DependentUpon>CreateProjectView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProjectDashboardView.xaml.cs">
       <DependentUpon>ProjectDashboardView.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateProjectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
