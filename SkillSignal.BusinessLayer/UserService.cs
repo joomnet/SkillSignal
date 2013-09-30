@@ -36,7 +36,7 @@
             this.dalContext.Users.Create(userAccount);
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             var deleted = this.dalContext.Users.Delete(user => user.Id == id);
         }

@@ -31,7 +31,7 @@ namespace SkillSignal.ServiceClients
             this._userService.SaveOrUpdate(userAccount);
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             this._userService.Delete(id);
         }

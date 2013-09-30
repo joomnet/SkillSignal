@@ -12,7 +12,7 @@ namespace SkillSignal.ViewModels.Users
 
         public event EventHandler AccountDeleted;
 
-        public string ID { get; private set; }
+        public int ID { get; private set; }
 
         string _firstName;
 
@@ -86,7 +86,7 @@ namespace SkillSignal.ViewModels.Users
             }
         }
 
-        public UserAccountViewModel(string id, INavigationService navigationService, bool isActive)
+        public UserAccountViewModel(int id, INavigationService navigationService, bool isActive)
             : base(navigationService)
         {
             this._navigationService = navigationService;

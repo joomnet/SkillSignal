@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="979f208b-6244-44eb-8dad-e4ef9ed308f2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="08f67f78-10da-48a7-87ee-75ee5a9adbd1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:9001/UserService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="1665a413-6774-41e3-9541-2cc5253e9f2f" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="9463815e-8ad4-4386-aa1b-986e618cca0b" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="1ce07aac-a83a-430d-beaa-517663f4d3d7" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
-    <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="ff36cc16-5f7a-41d0-b05f-f6566bac52f8" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
-    <MetadataFile FileName="SkillSignal.Domain.xsd" MetadataType="Schema" ID="7f6597b6-263d-48b0-977f-85f27db4e477" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="82fda7ab-896c-4a0f-a4c3-aa62e2e30d43" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="6b4fdbdd-1692-420d-a106-130b6e5fec5c" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c212d771-d96b-42d0-ad6a-72e1c83f3494" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
+    <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="b6c73c18-639c-4af4-937a-7213e23acc8c" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
+    <MetadataFile FileName="SkillSignal.Domain.xsd" MetadataType="Schema" ID="d5729abe-4180-4402-9de3-9d274fbc1611" SourceId="1" SourceUrl="http://localhost:9001/UserService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

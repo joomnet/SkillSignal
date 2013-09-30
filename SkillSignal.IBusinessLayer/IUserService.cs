@@ -19,7 +19,7 @@
         void SaveOrUpdate(UserAccount userAccount);
 
         [OperationContract]
-        void Delete(string id);
+        void Delete(int id);
 
         [OperationContract]
         IEnumerable<UserAccount> GetActiveUsers();

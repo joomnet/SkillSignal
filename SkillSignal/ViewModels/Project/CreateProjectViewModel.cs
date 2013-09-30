@@ -18,6 +18,8 @@ namespace SkillSignal.ViewModels.Project
             : base(projectServiceClient, PageNavigationService)
         {
         }
+
+        
     }
 
     internal class FakeProjectServiceClient : IProjectService
@@ -57,5 +59,7 @@ namespace SkillSignal.ViewModels.Project
         public ICommand Create { get; set; }
 
         public string ProjectName { get; set; }
+
+        public string Description { get; set; }
     }
 }

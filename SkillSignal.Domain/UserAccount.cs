@@ -54,7 +54,7 @@
         //    return !Equals(left, right);
         //}
 
-        public UserAccount(string id, string firstName, string lastName, AccessLevel accessLevel)
+        public UserAccount(int id, string firstName, string lastName, AccessLevel accessLevel)
         {
             Id = id;
             FirstName = firstName;
@@ -71,7 +71,7 @@
         public bool IsActive { get;  set; }
 
         [DataMember]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [DataMember]
         public string FirstName { get;  set; }

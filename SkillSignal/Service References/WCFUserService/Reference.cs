@@ -34,16 +34,22 @@ namespace SkillSignal.WCFUserService {
         System.Threading.Tasks.Task SaveOrUpdateAsync(SkillSignal.Domain.UserAccount userAccount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Delete", ReplyAction="http://tempuri.org/IUserService/DeleteResponse")]
-        void Delete(string id);
+        void Delete(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/Delete", ReplyAction="http://tempuri.org/IUserService/DeleteResponse")]
-        System.Threading.Tasks.Task DeleteAsync(string id);
+        System.Threading.Tasks.Task DeleteAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetActiveUsers", ReplyAction="http://tempuri.org/IUserService/GetActiveUsersResponse")]
         SkillSignal.Domain.UserAccount[] GetActiveUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetActiveUsers", ReplyAction="http://tempuri.org/IUserService/GetActiveUsersResponse")]
         System.Threading.Tasks.Task<SkillSignal.Domain.UserAccount[]> GetActiveUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
+        SkillSignal.Domain.UserAccount[] GetAllUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetAllUsers", ReplyAction="http://tempuri.org/IUserService/GetAllUsersResponse")]
+        System.Threading.Tasks.Task<SkillSignal.Domain.UserAccount[]> GetAllUsersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,11 +103,11 @@ namespace SkillSignal.WCFUserService {
             return base.Channel.SaveOrUpdateAsync(userAccount);
         }
         
-        public void Delete(string id) {
+        public void Delete(int id) {
             base.Channel.Delete(id);
         }
         
-        public System.Threading.Tasks.Task DeleteAsync(string id) {
+        public System.Threading.Tasks.Task DeleteAsync(int id) {
             return base.Channel.DeleteAsync(id);
         }
         
@@ -111,6 +117,14 @@ namespace SkillSignal.WCFUserService {
         
         public System.Threading.Tasks.Task<SkillSignal.Domain.UserAccount[]> GetActiveUsersAsync() {
             return base.Channel.GetActiveUsersAsync();
+        }
+        
+        public SkillSignal.Domain.UserAccount[] GetAllUsers() {
+            return base.Channel.GetAllUsers();
+        }
+        
+        public System.Threading.Tasks.Task<SkillSignal.Domain.UserAccount[]> GetAllUsersAsync() {
+            return base.Channel.GetAllUsersAsync();
         }
     }
 }

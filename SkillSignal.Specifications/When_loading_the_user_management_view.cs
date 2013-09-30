@@ -25,9 +25,9 @@ namespace SkillSignal.Specifications
                                       new EnumerableQuery<UserAccount>(
                                           new List<UserAccount>
                                               {
-                                                  new UserAccount("id1", "Segun","Meduoye", AccessLevel.Admin),
-                                                  new UserAccount("id2","Wumi","Meduoye", AccessLevel.Admin),
-                                                  new UserAccount("id3","Jishua","Meduoye", AccessLevel.Admin)
+                                                  new UserAccount(1, "Segun","Meduoye", AccessLevel.Admin),
+                                                  new UserAccount(2,"Wumi","Meduoye", AccessLevel.Admin),
+                                                  new UserAccount(3,"Jishua","Meduoye", AccessLevel.Admin)
 
                                               }));
 
@@ -70,26 +70,73 @@ namespace SkillSignal.Specifications
             () => _userManagementViewModel.UserCollection.Count(x => x.IsEdittable).ShouldEqual(1);
 
         It should_save_the_user =
-            () => _userServiceClientMock.Verify(x => x.SaveOrUpdate(Moq.It.Is<UserAccount>(o => o.Id == "id1")));
+            () => _userServiceClientMock.Verify(x => x.SaveOrUpdate(Moq.It.Is<UserAccount>(o => o.Id == 1)));
 
         static UserAccountViewModel firstUserAccount;
 
         static UserAccountViewModel secondUserAccount;
     }
 
+    public class CacheKey 
+    {
+        protected bool Equals(CacheKey other)
+        {
+            return string.Equals(this.id, other.id);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+            return Equals((CacheKey)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (this.id != null ? this.id.GetHashCode() : 0);
+        }
+
+        public static bool operator ==(CacheKey left, CacheKey right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(CacheKey left, CacheKey right)
+        {
+            return !Equals(left, right);
+        }
+
+        string id;
+
+        public CacheKey(string id)
+        {
+            this.id = id;
+        }
+    }
+
     public class and_a_user_is_deleted : When_loading_the_user_management_view
     {
-        Establish context = () => _userServiceClientMock.Setup(repo => repo.Delete("id1"));
+        Establish context = () => _userServiceClientMock.Setup(repo => repo.Delete(1));
 
         Because of = async () =>
             {
-               await  _userManagementViewModel.UserCollection.First(x => x.ID == "id1").Delete.ExecuteAsync(null);
+               await  _userManagementViewModel.UserCollection.First(x => x.ID == 1).Delete.ExecuteAsync(null);
             };
 
         It the_user_should_be_deleted =
             () =>
                 {
-                    _userManagementViewModel.UserCollection.Select(x => x.ID).ShouldNotContain("id1");
+                    _userManagementViewModel.UserCollection.Select(x => x.ID).ShouldNotContain(1);
                     _userServiceClientMock.Verify();
                 };
     }

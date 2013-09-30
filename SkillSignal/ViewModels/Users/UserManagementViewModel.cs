@@ -121,15 +121,15 @@ namespace SkillSignal.ViewModels.Users
         {
             this.UserCollection = new ObservableCollection<UserAccountViewModel>(new List<UserAccountViewModel>
                 {
-                    new UserAccountViewModel(Guid.NewGuid().ToString(), pageNavigationService, true)
+                    new UserAccountViewModel(1, pageNavigationService, true)
                         {
                             FirstName = "Segun", LastName = "Meduoye", IsEdittable = true
                         },
-                    new UserAccountViewModel(Guid.NewGuid().ToString(), pageNavigationService, true)
+                    new UserAccountViewModel(2, pageNavigationService, true)
                         {
                             FirstName = "Ayo", LastName = "Meduoye"
                         },
-                    new UserAccountViewModel(Guid.NewGuid().ToString(), pageNavigationService, false)
+                    new UserAccountViewModel(3, pageNavigationService, false)
                         {
                             FirstName = "Gbemiga", LastName = "Meduoye"
                         },
