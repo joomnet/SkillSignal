@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20827.3
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillSignal.UI", "SkillSignal\SkillSignal.UI.csproj", "{89C9342E-B8CA-4817-A678-8FEE7A2306AB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{15B3E0D2-6217-493A-A690-158C497F5318} = {15B3E0D2-6217-493A-A690-158C497F5318}
@@ -35,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillSignal.BusinessLayer",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillSignal.IBusinessLayer", "SkillSignal.IBusinessLayer\SkillSignal.IBusinessLayer.csproj", "{FD8C4516-8B45-4CFB-8A0D-E6785BF7409F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillSignal.Server", "SkillSignal.DependencyInjection\SkillSignal.Server.csproj", "{6AB6D6B9-C201-47DD-9644-65B6756B9A78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillSignal.Server", "SkillSignal.Server\SkillSignal.Server.csproj", "{6AB6D6B9-C201-47DD-9644-65B6756B9A78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

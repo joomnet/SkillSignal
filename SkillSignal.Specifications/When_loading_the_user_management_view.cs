@@ -55,9 +55,9 @@ namespace SkillSignal.Specifications
             () =>
                 {
                     firstUserAccount = _userManagementViewModel.UserCollection.First();
-                    firstUserAccount.Edit.ExecuteAsync(null).Wait();
                     secondUserAccount = _userManagementViewModel.UserCollection.Skip(1).First();
-                    secondUserAccount.Edit.ExecuteAsync(null).Wait(2000);
+                    firstUserAccount.Edit.ExecuteAsync(null).Wait();
+                    secondUserAccount.Edit.ExecuteAsync(null).Wait();
                 };
 
         It the_user_should_be_marked_as_edittable = () =>

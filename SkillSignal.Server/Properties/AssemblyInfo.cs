@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SkillSignal.Server")]
+[assembly: AssemblyTitle("SkillSignal.DependencyInjection")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SkillSignal.Server")]
+[assembly: AssemblyProduct("SkillSignal.DependencyInjection")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a048a208-6123-4acd-a265-7f911ca95113")]
+[assembly: Guid("1079d667-8756-4f37-859a-01bf495f61d0")]
 
 // Version information for an assembly consists of the following four values:
 //

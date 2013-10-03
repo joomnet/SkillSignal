@@ -87,9 +87,8 @@
     <Compile Include="When_loading_the_user_management_view.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\SkillSignal.DependencyInjection\App.config">
+    <None Include="..\SkillSignal.Server\App.config">
       <Link>App.config</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
