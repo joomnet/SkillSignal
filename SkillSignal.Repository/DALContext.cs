@@ -11,7 +11,7 @@ namespace SkillSignal.Repository
     public class DALContext : IDALContext
     {
         private DataAccessContext dbContext;
-        private IProjectRepository categories;
+        private IProjectRepository projects;
         private IUserAccountRepository products;
 
         public DALContext()
@@ -23,9 +23,9 @@ namespace SkillSignal.Repository
         {
             get
             {
-                if (categories == null)
-                    categories = new ProjectRepository(dbContext);
-                return categories;
+                if (this.projects == null)
+                    this.projects = new ProjectRepository(dbContext);
+                return this.projects;
             }
         }
 
@@ -46,8 +46,8 @@ namespace SkillSignal.Repository
 
         public void Dispose()
         {
-            if (categories != null)
-                categories.Dispose();
+            if (this.projects != null)
+                this.projects.Dispose();
             if (products != null)
                 products.Dispose();
             if (dbContext != null)

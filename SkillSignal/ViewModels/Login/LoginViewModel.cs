@@ -3,7 +3,7 @@ namespace SkillSignal.ViewModels.Login
     using System.Threading.Tasks;
     using System.Windows.Input;
 
-    using SkillSignal.WCFUserService;
+    using SkillSignal.UserServices;
 
 
     public class LoginViewModel : ViewModel

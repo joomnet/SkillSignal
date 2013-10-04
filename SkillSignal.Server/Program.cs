@@ -18,29 +18,41 @@ namespace SkillSignal.DependencyInjection
 
                    var unityContainer = new UnityContainer();
             unityContainer.RegisterType<IUserService, UserService>(new ContainerControlledLifetimeManager())
-                .RegisterType<IDALContext, DALContext>()
-                .RegisterType<IUserAccountRepository, UserAccountRepository>();
+                .RegisterType<IDALContext, DALContext>(new ContainerControlledLifetimeManager())
+                .RegisterType<IUserAccountRepository, UserAccountRepository>()
+                .RegisterType<IProjectService, ProjectService>(new ContainerControlledLifetimeManager());
 
             Console.WriteLine("Initializing Service Host..");
 
+                    var userServiceWcfConfiguration = new WCFServiceConfiguration("http://localhost:9001/UserService", "http://localhost:9001/UserService/mex");
+                    var projectServiceWcfConfiguration = new WCFServiceConfiguration("http://localhost:9001/ProjectService", "http://localhost:9001/ProjectService/mex");
 
-                    Uri serviceAddress = new Uri("http://localhost:9001/UserService");
-                    Uri mexAddress = new Uri("http://localhost:9001/UserService/mex");
-                    using (UnityServiceHost host = new UnityServiceHost(unityContainer, unityContainer.Resolve<IUserService>().GetType()))
+                    using (UnityServiceHost projectServiceHost = new UnityServiceHost(unityContainer, unityContainer.Resolve<IProjectService>().GetType()))
+                    using (UnityServiceHost userServiceHost = new UnityServiceHost(unityContainer, unityContainer.Resolve<IUserService>().GetType()))
                     {
-                        host.Description.Behaviors.Add(new ServiceMetadataBehavior());
-                        host.AddServiceEndpoint(typeof(IUserService), new BasicHttpBinding(), serviceAddress);
-                        host.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexHttpBinding(), mexAddress);
+                        userServiceHost.Description.Behaviors.Add(new ServiceMetadataBehavior());
 
-                        Console.WriteLine("Opening service host.. ");
+                        userServiceHost.AddServiceEndpoint(typeof(IUserService), new BasicHttpBinding(), userServiceWcfConfiguration.ServiceAddress);
+                        userServiceHost.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexHttpBinding(), userServiceWcfConfiguration.MexAddress);
 
-                        host.Open();
+                        projectServiceHost.Description.Behaviors.Add(new ServiceMetadataBehavior());
+
+                        projectServiceHost.AddServiceEndpoint(typeof(IProjectService), new BasicHttpBinding(), projectServiceWcfConfiguration.ServiceAddress);
+                        projectServiceHost.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexHttpBinding(), projectServiceWcfConfiguration.MexAddress);
+
+                        Console.WriteLine("Opening user service host.. ");
+                        userServiceHost.Open();
+                        Console.WriteLine("UserService host open.. ");
+
+                        Console.WriteLine("Opening ProjectService host.. ");
+                        projectServiceHost.Open();
+                        Console.WriteLine("ProjectService host open.. ");
 
                         Console.WriteLine("Listening.. press any key to exit.");
-
                         Console.Read();
          
-                        host.Close();
+                        userServiceHost.Close();
+                        projectServiceHost.Close();
                     }
                }
            }

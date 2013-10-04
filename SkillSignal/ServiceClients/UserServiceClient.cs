@@ -9,11 +9,11 @@ namespace SkillSignal.ServiceClients
 
     public class UserServiceClient : IUserService
     {
-        WCFUserService.IUserService _userService;
+        UserServices.IUserService _userService;
 
         public UserServiceClient()
         {
-            this._userService = new WCFUserService.UserServiceClient(new BasicHttpBinding(), new EndpointAddress("http://localhost:9001/UserService"));
+            this._userService = new UserServices.UserServiceClient(new BasicHttpBinding(), new EndpointAddress("http://localhost:9001/UserService"));
         }
 
         public bool CanAuthenticate(string userName, string password)

@@ -1,15 +1,14 @@
+using System;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Security.Cryptography;
+using LinqKit;
+using SkillSignal.IRepository;
+
 namespace SkillSignal.Repository
 {
-    using System;
-    using System.Data;
-    using System.Data.Entity;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.Security.Cryptography;
-
-    using LinqKit;
-
-    using SkillSignal.IRepository;
 
     public class Repository<TObject> : IRepository<TObject>
 

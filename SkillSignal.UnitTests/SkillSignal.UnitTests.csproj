@@ -83,6 +83,7 @@
     <Compile Include="AsyncRelayCommandTests.cs" />
     <Compile Include="ObjectValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WCFServiceConfigurationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -111,6 +112,10 @@
     <ProjectReference Include="..\SkillSignal.Repository\SkillSignal.Repository.csproj">
       <Project>{47BCAD04-6F37-4302-8DE2-6DC6C107A9AB}</Project>
       <Name>SkillSignal.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkillSignal.Server\SkillSignal.Server.csproj">
+      <Project>{6AB6D6B9-C201-47DD-9644-65B6756B9A78}</Project>
+      <Name>SkillSignal.Server</Name>
     </ProjectReference>
     <ProjectReference Include="..\SkillSignal\SkillSignal.UI.csproj">
       <Project>{89C9342E-B8CA-4817-A678-8FEE7A2306AB}</Project>

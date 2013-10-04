@@ -85,7 +85,12 @@
     <Compile Include="BootStrapper\ApplicationBootStrapper.cs" />
     <Compile Include="Commands\DisplayableNavigationCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Service References\WCFUserService\Reference.cs">
+    <Compile Include="Service References\ProjServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserServices\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -114,7 +119,7 @@
     <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="ViewModels\Users\UserAccountViewModel.cs" />
     <Compile Include="ViewModels\Users\UserManagementViewModel.cs" />
-    <Compile Include="Views\CreateProjectView.xaml.cs">
+    <Compile Include="Views\Projects\CreateProjectView.xaml.cs">
       <DependentUpon>CreateProjectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProjectDashboardView.xaml.cs">
@@ -141,7 +146,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CreateProjectView.xaml">
+    <Page Include="Views\Projects\CreateProjectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,23 +206,34 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SkillSignal.Domain.Project.datasource" />
     <None Include="Properties\DataSources\SkillSignal.Domain.UserAccount.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\WCFUserService\service.wsdl" />
-    <None Include="Service References\WCFUserService\service.xsd">
+    <None Include="Service References\ProjServices\service.wsdl" />
+    <None Include="Service References\ProjServices\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WCFUserService\service1.xsd">
+    <None Include="Service References\ProjServices\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WCFUserService\SkillSignal.Domain.xsd">
+    <None Include="Service References\ProjServices\SkillSignal.Domain.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WCFUserService\System.xsd">
+    <None Include="Service References\UserServices\service.wsdl" />
+    <None Include="Service References\UserServices\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServices\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServices\SkillSignal.Domain.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServices\System.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -267,16 +283,29 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WCFUserService\" />
+    <WCFMetadataStorage Include="Service References\ProjServices\" />
+    <WCFMetadataStorage Include="Service References\UserServices\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WCFUserService\configuration91.svcinfo" />
+    <None Include="Service References\UserServices\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WCFUserService\configuration.svcinfo" />
+    <None Include="Service References\UserServices\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WCFUserService\Reference.svcmap">
+    <None Include="Service References\UserServices\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProjServices\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProjServices\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProjServices\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

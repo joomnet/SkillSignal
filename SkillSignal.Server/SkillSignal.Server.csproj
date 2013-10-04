@@ -65,6 +65,7 @@
     <Compile Include="UnityInstanceProvider.cs" />
     <Compile Include="UnityServiceBehaviour.cs" />
     <Compile Include="UnityServiceHost.cs" />
+    <Compile Include="WCFServiceConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
